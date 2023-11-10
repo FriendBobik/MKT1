@@ -1,4 +1,4 @@
-from linear_regression import linear_regression
+from linear import linear_regression
 import numpy as np
 
 pressure = np.array([1.033, 1.113, 1.193, 1.273, 1.353, 1.433, 1.513])  # p, кгс/см^2

@@ -1,11 +1,8 @@
 #функция для линейной зависимости
-def linear_regression(np_x, np_y):
-    import numpy as np
-    from scipy.stats import linregress
-    import matplotlib.pyplot as plt
-
-    pressure = np_x
-    voltage = np_y
+import numpy as np
+from scipy.stats import linregress
+import matplotlib.pyplot as plt
+def linear_regression(pressure, voltage):
 
     slope, intercept, r_value, p_value, std_err = linregress(pressure, voltage)
 
@@ -33,3 +30,15 @@ def linear_regression(np_x, np_y):
     plt.legend()
     plt.grid(True)
     plt.show()
+#Для зависимости P от R
+def chart_empty(R, P):
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(R, P, marker='.', linestyle=' ', color='red', label='Измеренные данные')
+    plt.xlabel('R + R_нагрузки (Ом)')
+    plt.ylabel('P (вт)')
+    plt.title('Зависимость P от R + R_нагрузки')
+    plt.grid(True)
+    plt.show()
+
+

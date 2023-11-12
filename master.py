@@ -1,7 +1,20 @@
-from linear import linear_regression
-import numpy as np
+from linear import linear_regression, chart_empty
+import pandas as pd
 
-pressure = np.array([1.033, 1.113, 1.193, 1.273, 1.353, 1.433, 1.513])  # p, кгс/см^2
-voltage = np.array([11.14, 12.18, 13.22, 14.27, 15.31, 16.01, 16.35])  # V, вольт
+#График для давления
 
-print(linear_regression(pressure, voltage))
+pressure_voltage = pd.read_csv('data/pressure_voltage.csv')
+
+pressure = pressure_voltage['pressure'].to_numpy()
+voltage = pressure_voltage['voltage'].to_numpy()
+
+linear_regression(pressure, voltage)
+
+#График для мощности
+
+R_P = pd.read_csv('data/R_P.csv')
+
+R= R_P['R'].to_numpy()
+P= R_P['P'].to_numpy()
+
+chart_empty(R, P)

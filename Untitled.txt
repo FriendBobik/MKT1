@@ -1,0 +1,365 @@
+\documentclass[12pt,oneside,a4paper]{article}
+ 
+\def\projecttype{Лабораторная работа }% тип работы
+\def\projectno{1}% номер работы, если есть
+\def\projectname{Изучение двигателя Стирлинга}% название
+\def\perenos{10}% Если название 1 строка то 14, если 2 то 12 и тд может менятся от шрифта 
+\def\name{\href{https://t.me/mali_na}{Малиницкий Дмитрий}}% автор
+
+ 
+\usepackage{listings}
+
+\lstset{
+    language=C++,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    frame=single,
+    captionpos=b,
+    showstringspaces=false,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+
+ \usepackage[%
+  a4paper,%
+  left = 20mm,%
+  right = 20mm,%
+  textwidth = 178mm,%
+  top = 40mm,%
+  bottom = 30mm,%
+  %heightrounded,%
+  headheight=70pt,%
+  headsep=25pt,%
+]{geometry}
+\usepackage{graphicx}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{hyperref}
+\hypersetup{ colorlinks = true, allcolors  = link-blue, }
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xspace}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{color,colortbl}
+\usepackage[english,russian]{babel}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{amssymb}
+
+
+
+\definecolor{link-blue}{RGB}{6,69,173}
+\definecolor{dark-green}{RGB}{52,133,62}
+\definecolor{light-blue}{RGB}{127,180,240}
+\definecolor{dark-blue}{RGB}{72,120,224}
+\definecolor{heading-grey}{RGB}{128,128,128}
+\definecolor{heading2-grey}{RGB}{200,200,200}
+\definecolor{Critical}{RGB}{192,0,0}
+\definecolor{High}{RGB}{255,0,0}
+\definecolor{Medium}{RGB}{255,192,0}
+\definecolor{Low}{RGB}{255,255,0}
+\definecolor{Informational}{RGB}{94,185,255}
+
+
+
+
+
+
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{array,booktabs}
+\usepackage{fancyhdr}
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand{\headrulewidth}{0.2pt}
+\fancyfoot{}
+\fancyhead{}
+\fancyfoot[C]{Confidential}
+\fancypagestyle{plain}{
+    \fancyfoot[C]{\\ \textcolor{heading-grey}{\newline Page \thepage\ of \pageref{LastPage}}}
+    \fancyhead[R]{\includegraphics[width=5cm]{imgmain/hselogo_international_line.png}}
+}
+\fancypagestyle{fancy}{
+    \fancyfoot[C]{\\ \textcolor{heading-grey}{\newline Page \thepage\ of \pageref{LastPage}}}
+    \fancyhead{}
+}
+\thispagestyle{fancy}\pagestyle{plain}
+
+\newcommand{\email}[1]{\href{mailto://#1}{#1}}
+\newcommand{\newchapter}[1]{{\section*{#1}
+\addcontentsline{toc}{chapter}{#1}}}
+\newcommand{\newsection}[1]{{\subsection*{#1}
+\addcontentsline{toc}{section}{#1}}}
+\newcommand{\newsubsection}[1]{{\subsubsection*{#1}
+\addcontentsline{toc}{subsection}{#1}}}
+\usepackage[skip=10pt plus1pt, indent=0pt]{parskip}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\makeatletter
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \section*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+\makeatother
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\huge\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
+
+% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
+% \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+
+\titlespacing{\section}{0pt}{1em}{0.5em}
+\titlespacing{\subsection}{0pt}{0em}{0.25em}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\thesection}{\arabic{section}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%          Begin title page           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+  \thispagestyle{empty}
+   \thispagestyle{fancy}
+   \begin{center}
+        \vspace*{8em}
+   
+        \centering\includegraphics[width=13cm]{imgmain/hselogo_international_line.png}
+
+        \vspace{3em}
+
+        \Huge{\textsc{\projecttype  \projectno \\ \projectname}}
+
+        \vspace{\perenos em}
+        
+   \Large {\today \\ \name}
+      
+   \end{center}
+
+
+\end{titlepage}
+
+\renewcommand{\headrulewidth}{0.2pt}
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%           Begin contents            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parindent=0.5cm
+
+
+
+
+\tableofcontents
+
+\newpage
+\section{Оборудование:}
+\begin{enumerate}[itemsep=1pt, parsep=1pt]
+  \item Модель двигателя Стирлинга
+  \item Электронный датчик давления
+  \item Спиртовка
+  \item Горючее для спиртовки (изопропиловый спирт)
+  \item Зажигалка
+  \item Магазин сопротивлений
+  \item Низкоомный измерительный резистор (51 ом)
+  \item Монтажная макетная плата
+  \item Оптический датчик линии для Arduino
+  \item Четырех лучевой цифровой осциллограф с набором щупов
+  \item Электронные весы
+  \item Комплект соединительных проводов
+  \item Тепловизор 
+\end{enumerate}
+
+\section{Теоретическая часть}
+
+Тепловые машины замкнутого цикла могут преобразовывать тепловую энергию в механическую или электрическую. Двигатель Стирлинга, изобретенный Робертом Стирлингом в 1816 году, является одним из таких устройств и исторически стал вторым тепловым двигателем после паровой машины. Существует три основных типа двигателя Стирлинга: $\alpha$, $\beta$ и $\gamma$-типы.
+
+В данной работе рассматривается конструкция $\gamma$-типа, как наиболее простая для технической реализации. Основные отличительные черты двигателя Стирлинга:
+\begin{itemize}
+  \item Отсутствие клапанов и вентилей, что делает его конструкцию простой.
+  \item Замкнутый цикл работы, при котором не происходит выброса рабочего тела в окружающую среду.
+  \item Работа компрессионного поршня при низкой температуре, что уменьшает скорость его износа.
+  \item Возможность использования источников тепла различной природы, что позволяет создавать экологически чистые двигатели.
+\end{itemize}
+
+Каждый двигатель Стирлинга содержит расширительный и компрессионный объемы, а также регенератор (теплообменник), который значительно повышает его эффективность.
+
+Идеальная модель цикла Стирлинга состоит из четырех фаз: холодное изотермическое сжатие, нагрев при постоянном объеме, горячее изотермическое расширение и охлаждение при постоянном объеме. Эффективность работы двигателя и приближение его КПД к циклу Карно обусловлены уникальными характеристиками цикла Стирлинга, такими как изотермическое сжатие и расширение, а также обмен теплом с внутренним тепловым резервуаром двигателя, а не с внешней средой.
+
+\[
+\text{КПД} = \frac{A}{Q} = 1 - \frac{T_H}{T_X}
+\]
+
+где \( A \) - работа, совершаемая рабочим телом за один цикл, и \( Q \) - количество тепла, полученное от нагревателя. Таким образом, КПД идеального цикла Стирлинга может совпадать с КПД цикла Карно. Однако следует отметить, что в реальных условиях КПД двигателя Стирлинга будет ниже из-за различных практических факторов, таких как неидеальное сжатие и расширение газа и потери тепла.
+
+
+\section{Практическая часть}
+
+В рамках лабораторной работы была собрана установка двигателя Стирлинга, а также выполнена сборка электрической схемы рис(\ref{fig:ris2}) для измерения мощности, а так же количества оборотов и давления. Осциллограф был настроен для отслеживания и регистрации показаний.
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.45]{Work/MKT 1/img/Снимок экрана 2023-11-12 в 21.44.42.png}
+    \caption{Зависимость давления от напряжения}
+    \label{fig:ris2}
+\end{figure}
+
+\subsection{Калибровка датчика давления}
+
+Процесс калибровки датчика давления включал снятие зависимости показаний давления от напряжения на датчике. Таблица \ref{tab:calibration} представляет результаты калибровки:
+
+\begin{table}[H]
+\centering
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{p, кгс/см\textsuperscript{2}} & \textbf{V, вольт} \\ \hline
+1.033 & 1.114 \\ \hline
+1.113 & 1.218 \\ \hline
+1.193 & 1.322 \\ \hline
+1.273 & 1.427 \\ \hline
+1.353 & 1.531 \\ \hline
+1.433 & 1.601 \\ \hline
+1.513 & 1.635 \\ \hline
+\end{tabular}
+\caption{Зависимость давления на датчике от напряжения}
+\label{tab:calibration}
+\end{table}
+Далее построим график , для этого напишем код на \href{https://github.com/FriendBobik/MKT1}{Python}. Так как по паспорту зависимость линейная, то проведем линейную аппроксимацию. График выглядит вот так:
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.7]{Work/MKT 1/img/Figure_1.png}
+    \caption{Зависимость давления от напряжения}
+    \label{fig:ris1}
+\end{figure}
+
+Так же получим зависимость напряжения от давления, она задается формулой $$V=-0.04+1.13p$$ МНК дает для коэффициента наклона погрешность в 6 \%
+
+\subsection{PV диаграмма}
+
+
+Чтобы построить такую диаграмму, снимем зависимость оборотов от времени, а так же давления от времени. Зная коэффициент пересчета напряжения в давление, построим график зависимости давления от времени.
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.7]{Work/MKT 1/img/Figure_4.png}
+    \caption{Зависимость Давления от времени}
+    \label{fig:ris4}
+\end{figure}
+
+
+
+Формула для объёма рабочего тела:
+
+\[ V = V_E + 0.5 \cdot V_C \cdot (1 + \cos(\phi(t) + \delta)) + V_D \]
+
+Где
+$V_E = 5.027\,cm^3$  - объём камеры расширительного поршня, информация была взята c \href{https://www.enginediy.com/products/single-cylinder-stirling-engine-model-with-led-light-science-experiment-teaching-collection-γ-shape}{официального сайта}
+
+$ V_C = V_E$ - объём камеры компрессионного поршня приблизительно равен объёму расширительного
+
+$\delta = \frac{\pi}{2}$ - угловое смещение положений поршней
+
+$V_D = 0.512\,cm^3$ - паразитный объём приблизительно
+
+$\phi(t) = \frac{2\pi}{T} $ - угол поворота маховика
+
+Построим график \( V(t) \):
+\newpage
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.7]{Work/MKT 1/img/Figure_5.png}
+    \caption{Зависимость объёма от времени}
+    \label{fig:ris4}
+\end{figure}
+
+Построим график давления от объёма, для одного цикла: 
+
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.4]{Work/MKT 1/img/Снимок экрана 2023-11-19 в 18.52.24.png}
+    \caption{Зависимость давления от объема}
+    \label{fig:ris5}
+\end{figure}
+
+
+
+
+\subsection{Мощность двигателя}
+
+ После настройки оборудования начат процесс снятия показаний мощности, генерируемой двигателем, на нагрузочном резисторе. Была проведена серия экспериментов с целью определения зависимости мощности на резисторе от сопротивления, установленного на магазине сопротивлений. Разогрев двигатель начал снимать зависимость. Мощность я начал определять как произведение показаний напряжения 1 и 2 канала осциллографа деленную на сопротивление токоизмерительного резистора $R_{\text{изм}}=51\textbf{ Ом}$, смотреть рис(\ref{tab:calibration}). Промеряем 50 точек от 0 до 500 ом, от 500 до 1500 ом 10 точек и от 1500 до 5000 7 точек, построим график с помощью \href{https://github.com/FriendBobik/MKT1}{Python}.
+
+
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.7]{Work/MKT 1/img/Figure_2.png}
+    \caption{Зависимость мощности от сопротивления нагрузки}
+    \label{fig:ris3}
+\end{figure}
+
+
+Как мы видим максимальная мощность выделяется на двигателе на плато от 251 до 431 ом нагрузки, и составляет $3.41 \cdot 10^{-2}$ Вт. Зная это значение можно оценить КПД всей установки. 
+
+
+\subsection{КПД установки}
+
+Для оценки КПД, необходимо рассчитать мощность выделяющуюся на горелке, для этого проанализируем скорость сгорания спирта в спиртовке. Для этого по кадрово отсмотрим видео сгорания спирта, и построим график зависимости изменения массы спиртовки от времени, для этого так же воспользуемся \href{https://github.com/FriendBobik/MKT1}{Python}.
+
+
+\newpage
+\begin{figure}[!ht]
+    \centering
+\includegraphics[scale=0.7]{Work/MKT 1/img/Figure_3.png}
+    \caption{Зависимость изменения массы от времени}
+    \label{fig:ris3}
+\end{figure}
+
+
+Из графика видно, что зависимость линейная, а угол наклона, то есть скорость сгорания $7.04\cdot 10^{-6}$ \text{кг/с}, а погрешность МНК 1.37 \%. Тогда оценим мощность выделяющуюся на двигателе. Зная что сгорает изопропиловый спирт, можем оценить мощность как произведения скорости сгорания на энергию сгорания, и получим $204.01$ Вт. Тогда можем оценить КПД данной установки, $1.42 \cdot 10^{-2}$ \%. Я пишу про оценку, так как в ходе эксперимента невозможно было гарантировать постоянство сгорания спирта, постоянство работы двигателя, натяжения тросов и тд.
+
+
+
+
+
+\end{document}
+       
